@@ -17,7 +17,7 @@ class usuario extends bd{
 	}
 	
 	function loginUsuarios($Usuario,$Password){
-		$this->campos=array("count(*) as Can,CodUsuario,Nivel,Idioma");	
+		$this->campos=array("count(*) as Can,CodUsuario,Nivel");	
 		return $this->getRecords("Usuario='$Usuario' and Pass='$Password' and Activo=1");
 	}
 }
