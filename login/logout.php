@@ -6,11 +6,10 @@ foreach($_SESSION as $k=>$v){
 //	echo $k."-".$v;
 	unset($_SESSION[$k]);
 }
-unset($_SESSION["login"]);
 unset($_SESSION["CodUsuarioLog"]);
-unset($_SESSION["CodAl"]);
+unset($_SESSION["LoginSistemaRedes"]);
 unset($_SESSION["Nivel"]);
-unset($_SESSION["CodDocente"]);
+unset($_SESSION["Pass"]);
 session_destroy();
 header("Location:".url_base().$directory);
 ?>

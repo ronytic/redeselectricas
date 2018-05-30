@@ -79,11 +79,9 @@ if(!empty($_POST)){
 			);
             //echo "asd";
 			$logusuario->insertarRegistro($valuesLog,0);
-			//mysql_query("INSERT INTO logusuarios VALUES(NULL,$codUsuario,$Nivel,'$url','$fecha','$hora','$agente','$ip','$referencia','$lenguaje')");
 			$_SESSION['CodUsuarioLog']=$codUsuario;
-			$_SESSION['LoginSistemaTigre']=1;
+			$_SESSION['LoginSistemaRedes']=1;
 			$_SESSION['Nivel']=$Nivel;
-			$_SESSION['Idioma']=$reg['Idioma'];
             $_SESSION['Pass']=md5($pass);
 			header("Location:".$direccion);
 		}
