@@ -36,7 +36,7 @@ $submenu=new submenu;
     <!-- Page title -->
     <title><?php echo $tituloSistema?></title>
     
-    <link rel="shortcut icon" type="image/ico" href="<?php echo $folder?>favicon_1.ico" />
+    <link rel="shortcut icon" type="image/ico" href="<?php echo $folder?>imagenes/favicon_1.ico" />
 
     <!-- Vendor styles -->
     <link rel="stylesheet" href="<?php echo $folder?>css/core/font-awesome.css" />
