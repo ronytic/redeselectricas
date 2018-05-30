@@ -1,10 +1,6 @@
 <?php
 include_once("login/check.php");
 php_start();
-$folder="";
-$titulo="Distribuidora del SUR";
-$subtitulo="";
-$titulo2="Página de Inicio";
 ?>
 <?php include_once("cabecerahtml.php");?>
 <?php include_once("cabecera.php");?>
@@ -23,7 +19,7 @@ $titulo2="Página de Inicio";
                       <div class="carousel-inner" role="listbox">
                         <div class="item active">
                             <center>
-                          <img src="imagenes/inicio/1.jpg" alt="">
+                          <img src="imagenes/inicio/2.png" alt="">
                           </center>
                           <div class="carousel-caption">
                             ...
@@ -31,7 +27,7 @@ $titulo2="Página de Inicio";
                         </div>
                         <div class="item">
                             <center>
-                          <img src="imagenes/inicio/2.jpg" alt="">
+                          <img src="imagenes/inicio/1.jpg" alt="">
                             </center>
                           <div class="carousel-caption">
                             ...
