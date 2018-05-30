@@ -36,9 +36,9 @@
                         <a class="" href="<?php echo $folder?>">Inicio</a>
                     </li>
                     
-                    <li>
+                    <!--<li>
                         <a class="" href="<?php echo $folder?>usuario/contrasena/">Modificar Contraseña</a>
-                    </li>
+                    </li>-->
                     
                     <li>
                         <a class="" href="<?php echo $folder?>login/logout.php">Salir del Sistema</a>
@@ -175,7 +175,7 @@
     <div id="navigation">
         <div class="profile-picture">
             <a href="index-2.html">
-                <img src="<?php echo $folder?>imagenes/logo/logo.jpg" class="img-thumbnail  m-b" alt="logo">
+                <img src="<?php echo $folder?>imagenes/logo/logo.png" class="img-thumbnail  m-b" alt="logo">
             </a>
 
             <div class="stats-label text-color">

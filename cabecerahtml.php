@@ -2,8 +2,7 @@
 $Nivel=$_SESSION['Nivel'];
 $CodUsuarioLog=$_SESSION['CodUsuarioLog'];
 include_once("class/usuario.php");
-include_once("class/config.php");
-$config=new config;
+
 $usuario2=new usuario;
 $us2=$usuario2->mostrarDatos($CodUsuarioLog);
 $us2=array_shift($us2);
@@ -14,12 +13,12 @@ switch($Nivel){
     case 1:{$NivelUsuario="Administrador";}break;   
     case 2:{$NivelUsuario="Gerente";}break;   
     case 3:{$NivelUsuario="Administrador";}break;   
-    case 4:{$NivelUsuario="Secretaria";}break;      
-    case 4:{$NivelUsuario="Vendedor";}break;    
+    case 4:{$NivelUsuario="Vendedor";}break;      
+    case 4:{$NivelUsuario="Almacen";}break;    
 }
 
-$Titulo=$config->mostrarConfig("Titulo",1);
-$Lema=$config->mostrarConfig("Lema",1);
+include_once("configuracion.php");
+
 include_once("class/menu.php");
 $menu=new menu;
 include_once("class/submenu.php");
@@ -35,7 +34,7 @@ $submenu=new submenu;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="<?php php_start();?>" />
     <!-- Page title -->
-    <title><?php echo $Titulo?></title>
+    <title><?php echo $tituloSistema?></title>
     
     <link rel="shortcut icon" type="image/ico" href="<?php echo $folder?>favicon_1.ico" />
 

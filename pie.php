@@ -10,10 +10,10 @@
 
     <!-- Footer-->
     <footer class="footer">
-        <span class="pull-right">
-            Sistema Desarrollado por: <a href="http://fb.com/ronaldnina" target="_blank">Ronald Nina</a>
+        <span class="pull-right" style="color: #ffffff;">
+            Sistema Desarrollado por: <a href="http://fb.com/ronaldnina" target="_blank" style="color: #ffffff;">Ronald Nina</a>
         </span>
-        Sistema de Administración de Inventario, Ventas y Facturación 
+        Sistema de <?php echo $tituloSistema;?>
     </footer>
 
 </div>
