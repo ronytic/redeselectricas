@@ -1,8 +1,5 @@
 <?php
-include_once("../class/config.php");
-$config=new config;
-$titulo=$config->mostrarConfig("Titulo",1);
-$Lema=$config->mostrarConfig("Lema",1);
+include_once("../configuracion.php");
 $folder="../";
 ?>
 <!DOCTYPE html>
@@ -14,7 +11,7 @@ $folder="../";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Page title -->
-    <title><?php echo $titulo?></title>
+    <title><?php echo $tituloSistema?></title>
 
     <link rel="shortcut icon" type="image/ico" href="../favicon_1.ico" />
 
@@ -46,8 +43,8 @@ $folder="../";
     <div class="row">
         <div class="col-md-12">
             <div class="text-center m-b-md">
-                <h3><?php echo $titulo?></h3>
-                <small><?php echo $Lema?></small>
+                <h3><?php echo $tituloSistema?></h3>
+                <small><?php echo $lemaSistema?></small>
             </div>
             <div class="hpanel">
                 <div class="panel-body">
@@ -85,7 +82,8 @@ $folder="../";
     </div>
     <div class="row">
         <div class="col-md-12 text-center">
-            <strong>&copy; Todos los Derechos Reservadors <?php echo date("Y");?><br> Sistema Realizado por <a href="http://fb.com/ronaldnina/" target="_blank">Ronald Nina Layme</a></strong> 
+            <strong>&copy; Todos los Derechos Reservadors <?php echo date("Y");?>
+            <!--<br> Sistema Realizado por <a href="http://fb.com/ronaldnina/" target="_blank">Ronald Nina Layme</a>--></strong> 
         </div>
     </div>
 </div>
