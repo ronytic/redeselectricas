@@ -52,7 +52,7 @@ $(document).on("ready",function(){
             $("[name=stock]").val(data.stock)
         },"json");
     });
-    $("[name=cantidad]").keyup(function(){
+     $(document).on("keyup change","[name=cantidad]",function(){
         var cantidad=parseInt($(this).val());
         var cantidadf=parseInt($("[name=stock]").val())+cantidad;
         $("[name=stockfinal]").val(cantidadf);
@@ -134,6 +134,7 @@ $(document).on("ready",function(){
             <td><select name="tipo" class="form-control">
                     <option value="ingreso">Ingreso</option>
                     <option value="devolucion">Devolución</option>
+                    <option value="traspaso">Traspaso</option>
                 </select>
             </td>
         </tr>
