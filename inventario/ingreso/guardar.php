@@ -19,7 +19,7 @@ $valores=array("codproveedor"=>"'$codproveedor'",
                "tipo"=>"'$tipo'",
                "codcliente"=>"'$codcliente'",
                "codalmacen"=>"'$codalmacen'",
-
+               "detalle"=>"'$detalle'",
             );
 
 

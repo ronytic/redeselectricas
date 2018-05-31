@@ -27,6 +27,10 @@ $material=new material;
 
 include_once("../../class/almacen.php");
 $almacen=new almacen;
+
+include_once("../../class/cliente.php");
+$cliente=new cliente;
+
 $i=0;
 $total=0;
 foreach($ing as $in){
@@ -43,6 +47,9 @@ foreach($ing as $in){
     $st=array_shift($stipo);
     $al=$almacen->mostrarTodoRegistro("codalmacen=".$in['codalmacen'],1,"nombre");
     $al=array_shift($al);
+    
+    $cli=$cliente->mostrarTodoRegistro("codcliente=".$in['codcliente'],1,"nombre");
+    $cli=array_shift($cli);
     $i++;
     $datos[$i]['codingreso']=$in['codingreso'];
     
@@ -58,9 +65,11 @@ foreach($ing as $in){
     $datos[$i]['stockfin']=$in['stockfinal'];
     
     $datos[$i]['tipoing']=$in['tipo'];
+    $datos[$i]['cliente']=$cli['nombre'];
     
     $datos[$i]['almacen']=$al['nombre'];
     $datos[$i]['fechaIng']=$in['fecharegistro'];
+    $datos[$i]['detalle']=$in['detalle'];
     $total=$total+$in['cantidad'];
     
 }
@@ -68,5 +77,5 @@ $i++;
 $datos[$i]['codingreso']=0;
 $datos[$i]['stockanterior']="Total";
 $datos[$i]['cantidad']=$total;
-listadotabla(array("almacen"=>"Almacén","nombre"=>"Nombre","marca"=>"Marca","unidad"=>"Unidad","codigo"=>"Codigo","proveedor"=>"Proveedor","tipo"=>"Tipo","subtipo"=>"SubTipo","stockanterior"=>"StockAnt","cantidad"=>"Cant. ","stockfin"=>"StockFin","tipoing"=>"TipoIng","fechaIng"=>"FechaIngreso"),$datos,1,"","","");
+listadotabla(array("almacen"=>"Almacén","nombre"=>"Nombre","marca"=>"Marca","unidad"=>"Unidad","codigo"=>"Codigo","proveedor"=>"Proveedor","tipo"=>"Tipo","subtipo"=>"SubTipo","stockanterior"=>"StockAnt","cantidad"=>"Cant. ","stockfin"=>"StockFin","fechaIng"=>"FechaIngreso","tipoing"=>"TipoIng","cliente"=>"Cliente","detalle"=>"Detalle"),$datos,1,"","","");
 ?>

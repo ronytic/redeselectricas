@@ -148,6 +148,12 @@ $(document).on("ready",function(){
             </td>
         </tr>
         <tr>
+             <td class="text-right">Detalle</td>
+             <td>
+                 <textarea name="detalle" class="form-control"></textarea>
+             </td>   
+        </tr>
+        <tr>
             <td colspan="2"><div class="alert alert-danger"><b>Por Seguridad del Inventario no se permite Modificar una ves Ingresado el Material, VERIFIQUE NUEVAMENTE</b></div></td>
         </tr>
 
