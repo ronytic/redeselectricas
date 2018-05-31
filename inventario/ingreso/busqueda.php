@@ -33,6 +33,7 @@ $cliente=new cliente;
 
 $i=0;
 $total=0;
+$datos=array();
 foreach($ing as $in){
     
     $m=$material->mostrarTodoRegistro("codmaterial=".$in['codmaterial'],1,"nombre");
@@ -50,6 +51,9 @@ foreach($ing as $in){
     
     $cli=$cliente->mostrarTodoRegistro("codcliente=".$in['codcliente'],1,"nombre");
     $cli=array_shift($cli);
+    
+    
+    
     $i++;
     $datos[$i]['codingreso']=$in['codingreso'];
     
@@ -77,5 +81,19 @@ $i++;
 $datos[$i]['codingreso']=0;
 $datos[$i]['stockanterior']="Total";
 $datos[$i]['cantidad']=$total;
-listadotabla(array("almacen"=>"Almacén","nombre"=>"Nombre","marca"=>"Marca","unidad"=>"Unidad","codigo"=>"Codigo","proveedor"=>"Proveedor","tipo"=>"Tipo","subtipo"=>"SubTipo","stockanterior"=>"StockAnt","cantidad"=>"Cant. ","stockfin"=>"StockFin","fechaIng"=>"FechaIngreso","tipoing"=>"TipoIng","cliente"=>"Cliente","detalle"=>"Detalle"),$datos,1,"","","");
+$titulo=array("almacen"=>"Almacén",
+              "nombre"=>"Nombre",
+              "marca"=>"Marca",
+              "unidad"=>"Unidad",
+              "codigo"=>"Codigo",
+              "proveedor"=>"Proveedor",
+              "tipo"=>"Tipo",
+              "subtipo"=>"SubTipo",
+              "stockanterior"=>"StockAnt",
+              "cantidad"=>"Cant. ","stockfin"=>"StockFin",
+              "fechaIng"=>"FechaIngreso",
+              "tipoing"=>"TipoIng",
+              "cliente"=>"Cliente",
+              "detalle"=>"Detalle");
+listadotabla($titulo,$datos,0,"a.php","modificar.php","eliminar.php");
 ?>
