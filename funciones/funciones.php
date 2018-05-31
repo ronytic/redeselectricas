@@ -137,6 +137,9 @@ function listadotabla($titulo,$datos,$enlaces=0,$ver="",$modifica="",$elimina=""
 		echo "No se pudo encontrar los datos requeridos";
 		return false;
 	}
+    /*echo "<pre>";
+    print_r($datos);
+    echo "</pre>";*/
 	?>
     <div class="table-responsive">
 	<table class="table table-striped table-bordered table-hover">
