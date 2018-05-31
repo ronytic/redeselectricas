@@ -1,7 +1,7 @@
 <?php
 include_once("../../login/check.php");
 $folder="../../";
-$titulo="Listado de Materiales";
+$titulo="Listado de Ingreso de Materiales";
 
 
 include_once("../../class/proveedor.php");
