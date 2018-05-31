@@ -16,8 +16,13 @@ $ingreso=new ingreso;
 $ing=$ingreso->cantidadIngresos($codmaterial,$codalmacen);
 $ing=array_shift($ing);
 
+include_once("../../class/salida.php");
+$salida=new salida;
+$sal=$salida->cantidadSalidas($codmaterial,$codalmacen);
+$sal=array_shift($sal);
 
-$stock=$ing['IngresoTotal']-$salidas;
+
+$stock=$ing['IngresoTotal']-$sal['SalidaTotal'];
 
 $valores=array("marca"=>$mat['marca'],
               "codigo"=>$mat['codigo'],
