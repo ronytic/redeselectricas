@@ -189,11 +189,12 @@ function sumarTodo(){
     }
     .imagen{
         position: absolute;
-        display: none;
+        opacity: 0;
+        transition: all 1s;
     }
     .cuadroimagen:hover .imagen{
         z-index: 1000;
-        display: block;
+        opacity: 1;
     }
 </style>
 <?php include_once("../../pie.php");?>
