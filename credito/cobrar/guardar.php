@@ -9,7 +9,7 @@ $creditocobrar=new creditocobrar;
 
 $valores=array("codcliente"=>"'$codcliente'",
                "codcotizacion"=>"'$codcotizacion'",
-            
+               "codalmacen"=>"'$codalmacen'",
                
                "estado"=>"'$estado'",
                "total"=>"'$total'",

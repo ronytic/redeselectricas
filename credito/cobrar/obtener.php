@@ -13,7 +13,8 @@ $cli=array_shift($cli);
 $valores=array("total"=>number_format($c['totalgeneral'],2,".",""),
               "codcliente"=>$cli['codcliente'],
                "nombre"=>$cli['nombre'],
-               "telefonos"=>$cli['telefonos']
+               "telefonos"=>$cli['telefonos'],
+               "codalmacen"=>$c['codalmacen']
               );
 echo json_encode($valores);
 ?>

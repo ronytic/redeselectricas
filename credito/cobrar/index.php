@@ -28,6 +28,7 @@ $(document).on("ready",function(){
             $("[name=telefonos]").val(data.telefonos);
             $("[name=total]").val(data.total);
             $("[name=codcliente]").val(data.codcliente);
+            $("[name=codalmacen]").val(data.codalmacen);
         },"json");
     });
     
@@ -43,6 +44,7 @@ $(document).on("ready",function(){
     <form action="guardar.php" method="post" enctype="multipart/form-data">
     <table class="table table-bordered table-hover">
       <input type="" name="codcliente" >
+       <input type="" name="codalmacen" >
         <tr>
             <td class="text-right">Nro de Cotización</td>
             <td><input type="number" name="codcotizacion" class="form-control" autofocus >
