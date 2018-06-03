@@ -3,18 +3,6 @@ include_once("../../login/check.php");
 $folder="../../";
 $titulo="Registro Cuenta por Cobrar";
 
-include_once("../../class/proveedor.php");
-$proveedor=new proveedor;
-$pro=$proveedor->mostrarTodoRegistro("",1,"nombre");
-
-include_once("../../class/almacen.php");
-$almacen=new almacen;
-$al=$almacen->mostrarTodoRegistro("",1,"nombre");
-
-
-include_once("../../class/cliente.php");
-$cliente=new cliente;
-$cli=$cliente->mostrarTodoRegistro("",1,"nombre");
 
 
 include_once("../../cabecerahtml.php");
@@ -43,8 +31,8 @@ $(document).on("ready",function(){
 <div class="col-lg-12">
     <form action="guardar.php" method="post" enctype="multipart/form-data">
     <table class="table table-bordered table-hover">
-      <input type="" name="codcliente" >
-       <input type="" name="codalmacen" >
+      <input type="hidden" name="codcliente" >
+       <input type="hidden" name="codalmacen" >
         <tr>
             <td class="text-right">Nro de Cotización</td>
             <td><input type="number" name="codcotizacion" class="form-control" autofocus >
