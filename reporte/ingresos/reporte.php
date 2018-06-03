@@ -42,7 +42,7 @@ $cliente=new cliente;
 
 
 include_once("../../impresion/pdf.php");
-$titulo="Reporte de Ingresos";
+$titulo="Reporte de Ingresos de Material";
 class PDF extends PPDF{
     function Cabecera(){
         $titulo=array("almacen"=>"Almacén",
