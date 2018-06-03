@@ -20,7 +20,7 @@ foreach($credito as $c){
     $al=$almacen->mostrarTodoRegistro("codalmacen=".$c['codalmacen']);
     $al=array_shift($al);
     
-    $datos[$i]['codcotizacion']=$c['codcotizacion'];
+    $datos[$i]['codcreditocobrar']=$c['codcreditocobrar'];
     $datos[$i]['nombre']=$cli['nombre'];
     $datos[$i]['telefonos']=$cli['telefonos'];
     
