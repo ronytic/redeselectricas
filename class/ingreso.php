@@ -5,7 +5,7 @@ class ingreso extends bd{
 
 	function cantidadIngresos($codmaterial,$codalmacen){
         $this->campos=array('sum(cantidad) as IngresoTotal');
-        return $this->mostrarTodoRegistro("codmaterial=$codmaterial and codalmacen=$codalmacen",1,"");
+        return $this->mostrarTodoRegistro("codmaterial=$codmaterial and codalmacen LIKE '$codalmacen'",1,"");
     }
 }
 ?>
