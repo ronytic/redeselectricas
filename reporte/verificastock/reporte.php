@@ -27,11 +27,26 @@ $ingreso=new ingreso;
 include_once("../../class/salida.php");
 $salida=new salida;
 
+include_once("../../class/almacen.php");
+$almacen=new almacen;
+
+
+$al=$almacen->mostrarRegistro($codalmacen);
+$al=array_shift($al);
+if($codalmacen=="%"){
+    $nombrealmacen="Todos";
+}else{
+    $nombrealmacen=$al['nombre'];
+}
+
 include_once("../../impresion/pdf.php");
 $titulo="Reporte de Stock de Materiales";
 class PDF extends PPDF{
     function Cabecera(){
-       // "nombre"=>"Nombre","marca"=>"Marca","unidad"=>"Unidad","codigo"=>"Codigo","proveedor"=>"Proveedor","tipo"=>"Tipo","subtipo"=>"SubTipo","stockminimo"=>"StockMin","costocompra"=>"C. Compra","precioventa"=>"P. Venta","procedencia"=>"Proce"
+        global $nombrealmacen;
+        // "nombre"=>"Nombre","marca"=>"Marca","unidad"=>"Unidad","codigo"=>"Codigo","proveedor"=>"Proveedor","tipo"=>"Tipo","subtipo"=>"SubTipo","stockminimo"=>"StockMin","costocompra"=>"C. Compra","precioventa"=>"P. Venta","procedencia"=>"Proce"
+        $this->CuadroCabecera(20,"Almacén",10,$nombrealmacen);
+        $this->ln();
         $this->TituloCabecera(8,"N");
         $this->TituloCabecera(50,"Nombre");
         $this->TituloCabecera(25,"Marca");
