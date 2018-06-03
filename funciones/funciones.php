@@ -178,8 +178,8 @@ function listadotabla($titulo,$datos,$enlaces=0,$ver="",$modifica="",$elimina=""
             <?php
 			if(!empty($ver)){
 			?>
-				<a href="<?php echo $ver;?>?Cod=<?php echo $id;?>" class="btn btn-xs btn-success" target="" title="<?php echo $idioma['VerReporte']?>">
-                	<i class="icon-file"></i>
+				<a href="<?php echo $ver;?>?Cod=<?php echo $id;?>" class="btn btn-xs btn-success" target="" title="Ver Reporte">
+                	<i class="fa fa-file"></i>
                 </a>
 			<?php
 			}
