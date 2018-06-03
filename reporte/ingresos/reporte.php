@@ -62,7 +62,7 @@ class PDF extends PPDF{
               "detalle"=>"Detalle");
         $this->TituloCabecera(8,"N");
         $this->TituloCabecera(20,"Almacen");
-        $this->TituloCabecera(40,"Nombre");
+        $this->TituloCabecera(70,"Nombre");
         $this->TituloCabecera(20,"Marca");
         $this->TituloCabecera(15,"Cod.");
         $this->TituloCabecera(20,"Proveedor");
@@ -73,7 +73,7 @@ class PDF extends PPDF{
         $this->TituloCabecera(15,"StockFin");
         $this->TituloCabecera(20,"FechaIng");
         $this->TituloCabecera(20,"TipoIng");
-        $this->TituloCabecera(40,"Cliente");
+        $this->TituloCabecera(30,"Cliente");
         $this->TituloCabecera(20,"Detalle");
     }
 }
@@ -128,7 +128,7 @@ foreach($ing as $in){
     
     $pdf->CuadroCuerpo(8 ,$i,0,"R");
     $pdf->CuadroCuerpo(20,$al['nombre']);
-    $pdf->CuadroCuerpo(40,$m['nombre']);
+    $pdf->CuadroCuerpo(70,$m['nombre'],0,"",0,7);
     $pdf->CuadroCuerpo(20,$m['marca']);
     $pdf->CuadroCuerpo(15,$m['codigo']);
     $pdf->CuadroCuerpo(20,$p['nombre']);
@@ -139,7 +139,7 @@ foreach($ing as $in){
     $pdf->CuadroCuerpo(15,$in['stockfinal'],0,"R");
     $pdf->CuadroCuerpo(20,$in['fecharegistro']);
     $pdf->CuadroCuerpo(20,$in['tipo']);
-    $pdf->CuadroCuerpo(40,$cli['nombre']);
+    $pdf->CuadroCuerpo(30,$cli['nombre']);
     $pdf->CuadroCuerpo(20,$in['detalle']);
     $pdf->ln();
 }

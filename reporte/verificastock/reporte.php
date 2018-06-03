@@ -48,10 +48,10 @@ class PDF extends PPDF{
         $this->CuadroCabecera(20,"Almacén",10,$nombrealmacen);
         $this->ln();
         $this->TituloCabecera(8,"N");
-        $this->TituloCabecera(50,"Nombre");
+        $this->TituloCabecera(85,"Nombre");
         $this->TituloCabecera(25,"Marca");
         $this->TituloCabecera(20,"Unidad");
-        $this->TituloCabecera(20,"Codigo");
+        $this->TituloCabecera(15,"Codigo");
         $this->TituloCabecera(30,"Proveedor");
         $this->TituloCabecera(20,"Tipo");
         $this->TituloCabecera(20,"SubTipo");
@@ -59,7 +59,7 @@ class PDF extends PPDF{
         $this->TituloCabecera(20,"StockActual");
         $this->TituloCabecera(20,"C. Compra");
         $this->TituloCabecera(20,"P. Venta");
-        $this->TituloCabecera(50,"Proce");
+        $this->TituloCabecera(20,"Procedencia");
         
     }
 }
@@ -108,10 +108,10 @@ foreach($mat as $m){
     $stock=$ing['IngresoTotal']-$sal['SalidaTotal'];
     
     $pdf->CuadroCuerpo(8 ,$i,0,"R");
-    $pdf->CuadroCuerpo(50,$m['nombre']);
+    $pdf->CuadroCuerpo(85,$m['nombre']);
     $pdf->CuadroCuerpo(25,$m['marca'],0,"",0,"7");
     $pdf->CuadroCuerpo(20,$u['nombre']);
-    $pdf->CuadroCuerpo(20,$m['codigo']);
+    $pdf->CuadroCuerpo(15,$m['codigo']);
     $pdf->CuadroCuerpo(30,$p['nombre']);
     $pdf->CuadroCuerpo(20,$t['nombre']);
     $pdf->CuadroCuerpo(20,$st['nombre']);
@@ -119,7 +119,7 @@ foreach($mat as $m){
     $pdf->CuadroCuerpo(20,$stock,$stock<=$m['stockminimo']?1:0,"R",1,12,"B");
     $pdf->CuadroCuerpo(20,$m['costocompra'],0,"R");
     $pdf->CuadroCuerpo(20,$m['precioventa'],0,"R");
-    $pdf->CuadroCuerpo(50,$m['procedencia']);
+    $pdf->CuadroCuerpo(20,$m['procedencia']);
     $pdf->ln();
     $tot=$tot+$stock;
 }
