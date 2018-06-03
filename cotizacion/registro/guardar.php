@@ -52,6 +52,6 @@ $titulo="Mensaje de Confirmación";
 $folder="../../";
 $nuevo=1;
 $listar=1;
-//$botones=array("Facturar"=>array("facturar.php","danger"));
+$botones=array("Ver Cotización"=>array("vercotizacion.php?Cod=$codcotizacion","danger"));
 $mensajes[]="Sus datos fueron guardados correctamente.";
 include_once("../../respuesta.php");
