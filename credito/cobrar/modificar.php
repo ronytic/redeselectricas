@@ -42,8 +42,8 @@ $(document).on("ready",function(){
     <form action="actualizar.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="cod" value="<?php echo $Cod;?>">
     <table class="table table-bordered table-hover">
-        <input type="text" name="codcliente" value="<?=$cc['codcliente']?>">
-       <input type="text" name="codalmacen" value="<?=$cc['codalmacen']?>">
+        <input type="hidden" name="codcliente" value="<?=$cc['codcliente']?>">
+       <input type="hidden" name="codalmacen" value="<?=$cc['codalmacen']?>">
         <tr>
             <td class="text-right">Nro de Cotización</td>
             <td><input type="number" name="codcotizacion" class="form-control" value="<?=$cc['codcotizacion']?>" readonly>
