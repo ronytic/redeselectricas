@@ -20,7 +20,7 @@ class PDF extends PPDF{
     }
 }
 
-$pdf=new PDF("L","mm","letter");
+$pdf=new PDF("L","mm","legal");
 $pdf->Addpage();
 $i=0;
 foreach($cli as $c){

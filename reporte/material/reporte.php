@@ -38,7 +38,7 @@ class PDF extends PPDF{
         //$this->TituloCabecera(15,"StockMin");
         $this->TituloCabecera(20,"C. Compra");
         $this->TituloCabecera(20,"P. Venta");
-        $this->TituloCabecera(50,"Proce");
+        $this->TituloCabecera(50,"Procedencia");
         
     }
 }
