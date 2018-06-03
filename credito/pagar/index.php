@@ -25,8 +25,6 @@ $(document).on("ready",function(){
 <div class="col-lg-12">
     <form action="guardar.php" method="post" enctype="multipart/form-data">
     <table class="table table-bordered table-hover">
-      <input type="hidden" name="codcliente" >
-       <input type="hidden" name="codalmacen" >
         <tr>
             <td class="text-right">Proveedor</td>
             <td><select name="codproveedor" class="form-control" autofocus>
