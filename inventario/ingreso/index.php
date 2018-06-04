@@ -50,6 +50,8 @@ $(document).on("ready",function(){
             $("[name=codigo]").val(data.codigo)
             $("[name=unidad]").val(data.unidad)
             $("[name=stock]").val(data.stock)
+            $("[name=costocompra]").val(data.costocompra)
+            
         },"json");
     });
      $(document).on("keyup change","[name=cantidad]",function(){
@@ -123,8 +125,11 @@ $(document).on("ready",function(){
         </tr>
         <tr>
             <td class="text-right">Cantidad a Ingresar</td>
-            <td><input type="number" name="cantidad" class="form-control" min="0" step="1" value="0"></td>
+            <td><input type="number" name="cantidad" class="form-control" min="0" step="1" value="0">
+            <input type="hidden" name="costocompra" class="form-control" min="0" step="1" value="0" readonly>
+            </td>
         </tr>
+        
         <tr>
             <td class="text-right">Stock Final</td>
             <td><input type="number" name="stockfinal" class="form-control" min="0" step="1" value="0" readonly></td>

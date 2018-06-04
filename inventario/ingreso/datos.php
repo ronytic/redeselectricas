@@ -28,6 +28,7 @@ $valores=array("marca"=>$mat['marca'],
               "codigo"=>$mat['codigo'],
               "unidad"=>$uni['nombre'],
               "stock"=>$stock,
+               "costocompra"=>$mat['costocompra'],
               );
 echo json_encode($valores)
 ?>

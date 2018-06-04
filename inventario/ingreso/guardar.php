@@ -23,7 +23,24 @@ $valores=array("codproveedor"=>"'$codproveedor'",
             );
 
 
+
 $ingreso->insertarRegistro($valores);
+$codigo=$ingreso->ultimo();
+$precio=$costocompra;
+$total=$precio*$cantidad;
+include_once("../../class/kardex.php");
+$kardex=new kardex;
+$valor=array("codalmacen"=>"'$codalmacen'",
+             "codigo"=>"'$codigo'",
+            "codmaterial"=>"'$codmaterial'",
+             "tipo"=>"'ingreso'",
+             "precio"=>"'$precio'",
+             "cantidad"=>"'$cantidad'",
+             "total"=>"'$total'",
+             
+            );
+
+$kardex->insertarRegistro($valor);
 //print_r($valores);
 $titulo="Mensaje de Confirmación";
 $folder="../../";
