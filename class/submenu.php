@@ -8,8 +8,8 @@ class submenu extends bd{
 			case "1":{return $this->getRecords(" Admin=1 and CodMenu=$Menu and Activo=1","Orden");}break;
 			case "2":{return $this->getRecords(" Gerente=1 and CodMenu=$Menu and Activo=1","Orden");}break;
 			case "3":{return $this->getRecords(" Administrador=1 and CodMenu=$Menu and Activo=1","Orden");}break;
-			case "4":{return $this->getRecords(" Secretaria=1 and CodMenu=$Menu and Activo=1","Orden");}break;
-			case "5":{return $this->getRecords(" Vendedor=1 and CodMenu=$Menu and Activo=1","Orden");}break;
+			case "4":{return $this->getRecords(" Vendedor=1 and CodMenu=$Menu and Activo=1","Orden");}break;
+			case "5":{return $this->getRecords(" Almacen=1 and CodMenu=$Menu and Activo=1","Orden");}break;
 	}
 	}
 	function verificar($Directorio,$Nivel){
