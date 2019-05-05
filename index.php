@@ -1,11 +1,14 @@
 <?php
 include_once("login/check.php");
 php_start();
+$folder="";
+$titulo="";
+$Lema="";
 ?>
 <?php include_once("cabecerahtml.php");?>
 <?php include_once("cabecera.php");?>
                 <div class="col-lg-10 col-lg-offset-1">
-                
+
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                       <!-- Indicators -->
                       <ol class="carousel-indicators">
@@ -14,7 +17,7 @@ php_start();
                         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                         <li data-target="#carousel-example-generic" data-slide-to="3"></li>
                       </ol>
-                    
+
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner" role="listbox">
                         <div class="item active">
@@ -49,9 +52,9 @@ php_start();
                             ...
                           </div>
                         </div>
-                    
+
                       </div>
-                    
+
                       <!-- Controls -->
                       <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -67,10 +70,10 @@ php_start();
         </div>
         <div class="panel-footer">
         <span class="pull-right">
-              
+
         </span>
-            
+
         </div>
 
-        
+
 <?php include_once("pie.php");?>

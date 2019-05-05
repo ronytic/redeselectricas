@@ -15,7 +15,7 @@ include_once("../../cabecerahtml.php");
     <input type="hidden" name="cod" value="<?php echo $Cod;?>">
     <table class="table table-bordered table-hover">
         <tr>
-            <td class="text-right">Nombre</td>
+            <td class="text-right">Nombre de Empresa</td>
             <td><input type="text" name="nombre" class="form-control" autofocus value="<?php echo $cli['nombre']?>"></td>
         </tr>
         <tr>

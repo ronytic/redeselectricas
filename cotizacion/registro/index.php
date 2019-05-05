@@ -17,7 +17,7 @@ include_once("../../cabecerahtml.php");
 ?>
 <script>
 $(document).on("ready",function(){
-    
+
     $("[name=codcliente]").change(function(){
         var codcliente=$(this).val();
         $.post("datoscliente.php",{'codcliente':codcliente},function(data){
@@ -65,31 +65,50 @@ $(document).on("ready",function(){
      $(document).on("keyup change",".cantidad",function(){
          var fila=$(this).attr("rel");
         var cantidad=parseInt($(this).val());
-        var precio=parseInt($(".precio[rel="+fila+"]").val());
+        var precio=parseFloat($(".precio[rel="+fila+"]").val());
          var total=cantidad*precio;
-        $(".total[rel="+fila+"]").val(total.toFixed(2));
+        $(".total[rel="+fila+"]").val(total.toFixed(3));
          sumarTodo()
     });
-    $(document).on("keyup change","#descuento",function(){
-       var sb=parseFloat($("#subtotal").val()); 
-        var desc=parseFloat($(this).val());
-        var totalgeneral=sb-desc;
-        $("#totalgeneral").val(totalgeneral.toFixed(2))
-    });
+    $(document).on("keyup change","#descuento",calculardescuento);
     var l=0;
     $("#aumentar").click(function(){l++;
        $.post("fila.php",{"f":l},function(data){
-          $("#marca").before(data); 
+          $("#marca").before(data);
        });
     });
+
+    $(document).on("change keyup","#porcentajedescuento",function(){
+        var porcentajedescuento=parseFloat($("#porcentajedescuento").val());
+        var subtotal=$("#subtotal").val();
+        var descuentomonetario=subtotal*porcentajedescuento/100;
+        $("#descuento").val(descuentomonetario.toFixed(3));
+        calculardescuento();
+    });
+
+    $(document).on("click",".eliminarfila",function(){
+        if(confirm("¿Deseas eliminar?")){
+            $(this).parent().parent().remove();
+            sumarTodo();
+        }
+    });
 });
+function calculardescuento(){
+       var sb=parseFloat($("#subtotal").val());
+        var desc=parseFloat($("#descuento").val());
+        var totalgeneral=sb-desc;
+        $("#totalgeneral").val(totalgeneral.toFixed(3))
+    }
 function sumarTodo(){
     var tt=0;
     $(".total").each(function(){
        var valor=parseFloat($(this).val());
         tt=tt+valor;
     });
-    $("#subtotal").val(tt.toFixed(2));
+    $("#subtotal").val(tt.toFixed(3));
+
+    calculardescuento();
+
 }
 </script>
 <?php include_once("../../cabecera.php");?>
@@ -116,7 +135,7 @@ function sumarTodo(){
                 Fecha
                 <input type="date" name="fecha" value="<?=date("Y-m-d")?>" class="form-control" required>
             </td>
-            
+
             <td>
                 Tipo
                 <select name="tipo" class="form-control">
@@ -151,15 +170,21 @@ function sumarTodo(){
         <tr>
           <td colspan="3"><a href="#" class="btn btn-danger" id="aumentar">Aumentar</a></td>
            <td class="text-right" colspan="5">SubTotal</td>
-           <td><input type="text" name="subtotal" id="subtotal" readonly class="form-control  text-right" ></td>
+           <td><input type="text" name="subtotal" id="subtotal" readonly class="form-control  text-right" value="" ></td>
         </tr>
         <tr>
-         
-           <td class="text-right" colspan="8">Descuento</td>
-           <td><input type="text" name="descuento" id="descuento"value="0" class="form-control descuento text-right" ></td>
+
+           <td class="text-right" colspan="7">
+           Descuento(%)
+           </td>
+           <td>
+
+               <input type="number" id="porcentajedescuento" class="form-control" style="float:right;">
+           </td>
+           <td><input type="number" name="descuento" id="descuento" value="0" class="form-control descuento text-right" min="0" step="0.001"></td>
         </tr>
         <tr>
-          
+
            <td class="text-right" colspan="8">Total</td>
            <td><input type="text" name="totalgeneral" readonly id="totalgeneral" class="form-control text-right" ></td>
         </tr>
@@ -170,7 +195,7 @@ function sumarTodo(){
              <td class="text-right">Detalle</td>
              <td>
                  <textarea name="detalle" class="form-control"></textarea>
-             </td>   
+             </td>
         </tr>
         <tr>
             <td colspan="2"><div class="alert alert-danger"><b>Por Seguridad del Inventario no se permite Modificar una ves Ingresado el Material, VERIFIQUE NUEVAMENTE</b></div></td>

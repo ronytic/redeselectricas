@@ -35,15 +35,15 @@ $cotd=$cotizaciondetalle->mostrarTodoRegistro("codcotizacion=".$cot['codcotizaci
 include_once("../../impresion/pdf.php");
 class PDF extends PPDF{
     function Cabecera(){
-        
+
         global $cli,$al,$cot;
-        
+
         $this->CuadroCabecera(20,"Cliente:",40,$cli['nombre']);
         $this->CuadroCabecera(20,"Teléfono:",40,$cli['telefonos']);
         $this->CuadroCabecera(20,"Nit:",40,$cli['nit']);
         $this->ln();
         $this->CuadroCabecera(20,"Cotización:",40,$cot['codcotizacion']);
-        $this->CuadroCabecera(10,"Fecha:",40,$cot['fecha']);
+        $this->CuadroCabecera(12,"Fecha:",40,$cot['fecha']);
         $this->CuadroCabecera(20,"Almacen:",30,$al['nombre']);
         $this->ln();
         $this->CuadroCabecera(20,"Credito:",40,$cot['credito']);

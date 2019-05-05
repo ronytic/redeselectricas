@@ -1,7 +1,7 @@
 <?php
 if(!defined("RAIZ")){
 	$dir=dirname(__FILE__).DIRECTORY_SEPARATOR."../";
-	define("RAIZ",$dir);	
+	define("RAIZ",$dir);
 }
 include_once(RAIZ."basededatos.php");
 class bd{
@@ -9,13 +9,14 @@ class bd{
 	var $tabla;
 	var $resultado;
 	var $campos=array();
+	var $link;
 	function __construct(){
 		global $host,$user,$pass,$database;
-		@$link=mysql_connect($host,$user,$pass);
-		if($link){
-			if(@mysql_select_db($database,$link)){
-				mysql_query("SET NAMES utf8");
-				$this->l=$link;
+		@$this->link=mysqli_connect($host,$user,$pass,$database);
+		if($this->link){
+			if($this->link){
+				mysqli_query($this->link,"SET NAMES utf8");
+				$this->l=$this->link;
 			}
 			else{
 				echo "No se puede encontrar la base de Datos ";
@@ -31,28 +32,28 @@ class bd{
 		}
 	}
 	function __destruct(){
-		@mysql_close($this->l);
+		@mysqli_close($this->l);
 	}
 	function ultimo(){
-		return mysql_insert_id($this->l);	
+		return mysqli_insert_id($this->l);
 	}
 	function getTables(){
 		global $database;
-		return $this->sql("SHOW TABLES FROM ".$database);	
+		return $this->sql("SHOW TABLES FROM ".$database);
 	}
 	function get_db(){
 		global $database;
-		return $database;	
+		return $database;
 	}
 	private function sql($consulta)
 	{
 		//echo mysql_real_escape_string ($consulta);
-		$consQ =mysql_query (($consulta));
+		$consQ =mysqli_query ($this->l,($consulta));
 		//print_r(mysql_fetch_array($consQ));
 		$resultado =array ();
 		if ($consQ)
 		{
-			while ($consF =mysql_fetch_assoc ($consQ))
+			while ($consF =mysqli_fetch_assoc ($consQ))
 			array_push ($resultado, $consF);
 		}
 		//echo print_r($resultado);
@@ -61,18 +62,18 @@ class bd{
 	function queryE($data,$f){
 		//echo $data;
 		if($f=="lock" && md5("lock")==md5($f))
-		{	
-			mysql_query($data); //or die(mysql_error($this->l));
+		{
+			mysqli_query($this->l,$data); //or die(mysql_error($this->l));
 		}
 	}
 	function statusTable(){
 		$nombretabla=mb_strtolower($this->tabla,"utf8");
 		$query ="SHOW TABLE STATUS LIKE '$nombretabla'";
-		$res=mysql_query($query);
-		return mysql_fetch_array($res);
+		$res=mysqli_query($this->link,$query);
+		return mysqli_fetch_array($res);
 	}
 	 function getRecords ($where_str=false, $order_str=false,$group_str=false, $count=false, $start=0, $order_strDesc=false)
-	{	
+	{
 		if(empty($this->campos) || !isset($this->campos)){
 			$this->campos=array('*');
 		}
@@ -90,7 +91,7 @@ class bd{
 		$query ="SELECT $camposs FROM {$nombretabla} $where $group $order $count";
 		//echo $query."<br>";
 		return $this->sql ($query);
-	}  
+	}
 	public function getRecord ($id)
 	{
    		return $this->getRecords ("id=$id", false, 1);
@@ -125,10 +126,10 @@ class bd{
 			$query ="INSERT INTO {$nombretabla} VALUES ($datos)";
 		else
 			$query ="INSERT INTO {$nombretabla} ($campos) VALUES ($datos)";
-			
+
 		//echo $query."<br>";
 		//echo "NO ESTA HABILITADO EL REGISTRO";
-		return mysql_query($query);
+		return mysqli_query($this->l,$query);
 	}
 	public function deleteRecord ($where_str){
 		$where =$where_str ? "WHERE $where_str" : "";
@@ -147,7 +148,7 @@ class bd{
 		}
 		$datos =implode (", ", $datos);
 		//echo "UPDATE {$this->tabla} SET $datos $where";
-		mysql_query ("UPDATE {$this->tabla} SET $datos $where");
+		mysqli_query ($this->l,"UPDATE {$this->tabla} SET $datos $where");
 	}
 	public function updateRow($dataValues,$where_str){
 		$where =$where_str ? "WHERE $where_str" : "";
@@ -158,16 +159,16 @@ class bd{
 		$datos=implode(",",$data);
 		$nombretabla=mb_strtolower($this->tabla,"utf8");
 		//echo "UPDATE {$nombretabla} SET $datos $where";echo "<br>";
-		return mysql_query ("UPDATE $nombretabla SET $datos $where");
+		return mysql_query ($this->l,"UPDATE $nombretabla SET $datos $where");
 	}
 	public function vaciar(){
-		mysql_query("TRUNCATE TABLE {$this->tabla}");
+		mysqli_query("TRUNCATE TABLE {$this->tabla}");
 	}
 	private function getTableFields ($asArray=false){
 		$return =$this->getNameFields ('private');
 		$return +=$this->getNameFields ('public');
 		return $asArray ? $return : implode (', ', $return);
-	} 
+	}
 	private function getDefaultValues ($asArray=false){
 		$return =array ();
 		$fields =$this->getFieldsByType ('private');
@@ -197,7 +198,7 @@ class bd{
 		}
 		return $return;
 	}
-	
+
 	/*Funciones Propias*/
 	function estadoTabla(){
 		return $this->statusTable();
@@ -208,7 +209,7 @@ class bd{
 			$hora=date("H:i:s");
 			$CodUsuario=$_SESSION['CodUsuarioLog'];
 			$Nivel=$_SESSION['Nivel'];
-			
+
 			if(!isset($Values['Nivel'])&& empty($Values['Nivel'])){
 				$Values['Nivel']="$Nivel";
 			}
@@ -223,17 +224,17 @@ class bd{
 			}
 			$Values['Activo']=1;
 		}else{//,array("Activo"=>1)
-			$Values=array_merge	($Values);	
+			$Values=array_merge	($Values);
 		}
-		
+
 		//print_r($Values);
 		return $this->insertRow($Values,1);
 	}
 	function mostrarRegistro($Codigo,$activo=1){
-	
-		$this->campos=array('*'); 
+
+		$this->campos=array('*');
 		if($activo==""):
-			$condicion="";	
+			$condicion="";
 		elseif($activo==1):
 			$condicion=" and Activo=1";
 		elseif($activo==0):
@@ -247,28 +248,28 @@ class bd{
 			$this->campos=array('*');
 		}
 		if($activo==""):
-			$condicion="";	
+			$condicion="";
 		elseif($activo==1):
 			if($where==""){
 				$condicion=" Activo=1";
 			}else{
-				$condicion=" and Activo=1";	
+				$condicion=" and Activo=1";
 			}
 		elseif($activo==0):
 			if($where==""){
 				$condicion=" Activo=0";
 			}else{
-				$condicion=" and Activo=0";	
+				$condicion=" and Activo=0";
 			}
 		endif;
 		return $this->getRecords($where.$condicion,$orden);
 	}
 	function actualizarRegistro($values,$Where){
-		return $this->updateRow($values,$Where);	
+		return $this->updateRow($values,$Where);
 	}
 	function eliminarRegistro($Where){
-		return $this->updateRow(array("activo"=>"0"),$Where);	
+		return $this->updateRow(array("activo"=>"0"),$Where);
 	}
 }
-if(date("Y-m-d")>="2018-06-30"){die( "Sistema Bloqueado, ya caduco la etapa de prueba contactese con el administrador. Cel: 73230568 Ronald Nina");}
+//if(date("Y-m-d")>="2018-06-30"){die( "Sistema Bloqueado, ya caduco la etapa de prueba contactese con el administrador. Cel: 73230568 Ronald Nina");}
 ?>

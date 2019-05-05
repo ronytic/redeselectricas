@@ -13,13 +13,13 @@
     </div>
     <div id="logo" class="light-version">
         <span>
-            <?php echo $Titulo;?>
+            <?php echo isset($Titulo)?"$Titulo":"";?>
         </span>
     </div>
     <nav role="navigation">
         <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>
         <div class="small-logo">
-            <span class="text-primary"><small><?php echo $Titulo;?></small></span>
+            <span class="text-primary"><small><?php echo isset($Titulo)?"$Titulo":"";?></small></span>
         </div>
         <form role="search" class="navbar-form-custom" method="post" action="">
             <div class="form-group">
@@ -35,11 +35,11 @@
                     <li>
                         <a class="" href="<?php echo $folder?>">Inicio</a>
                     </li>
-                    
+
                     <!--<li>
                         <a class="" href="<?php echo $folder?>usuario/contrasena/">Modificar Contraseña</a>
                     </li>-->
-                    
+
                     <li>
                         <a class="" href="<?php echo $folder?>login/logout.php">Salir del Sistema</a>
                     </li>
@@ -174,18 +174,18 @@
 <aside id="menu">
     <div id="navigation">
         <div class="profile-picture">
-            <a href="index-2.html">
+            <a href="<?php echo $folder;?>">
                 <img src="<?php echo $folder?>imagenes/logo/logo.png" class="img-thumbnail  m-b" alt="logo">
             </a>
 
             <div class="stats-label text-color">
                 <div>
-                    
-                    <small class="text-muted"><?php echo $Lema;?></small>
+
+                    <small class="text-muted"><?php echo isset($Lema)?$Lema:"";?></small>
                 </div>
                 <span class="font-extra-bold font-uppercase"><?php echo $NombreUsuario;?> <?php echo $PaternoUsuario;?> <?php echo $MaternoUsuario;?> </span>
                 <div>
-                    
+
                     <small class="text-muted"><?php echo $NivelUsuario;?></small>
                 </div>
 
@@ -210,7 +210,7 @@
                     </h4>
                     <small class="text-muted">Your income from the last year in sales product X.</small>
                 </div>-->
-                
+
             </div>
         </div>
 
@@ -226,11 +226,11 @@
                     <?php foreach($submenu->mostrar($Nivel,$m['CodMenu']) as $sm){
                         ?>
                         <li><a href="<?php echo $folder;?><?php echo $m['Url']?><?php echo $sm['Url']?>"><?php echo $sm['Nombre']?></a></li>
-                        <?php    
+                        <?php
                     }?>
                     </ul>
                 </li>
-                <?php    
+                <?php
             }?>
         </ul>
     </div>
@@ -243,11 +243,11 @@
         <div class="row">
             <div class="col-lg-12 text-center m-t-md">
                 <h2>
-                    <?php echo $titulo;?>
+                    <?php echo isset($titulo)?"$titulo":"";?>
                 </h2>
 
                 <p>
-                    <?php echo $subtitulo;?>
+                    <?php echo isset($subtitulo)?"$subtitulo":"";?>
                 </p>
             </div>
         </div>
@@ -260,7 +260,7 @@
                         <a class="showhide"><i class="fa fa-chevron-up"></i></a>
                         <!--<a class="closebox"><i class="fa fa-times"></i></a>-->
                     </div>
-                    <?php echo $titulo2?>
+                    <?php echo isset($titulo2)?"$titulo2":"";?>
                 </div>
                 <div class="panel-body">
                     <div class="row">

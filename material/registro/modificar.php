@@ -81,18 +81,18 @@ include_once("../../cabecerahtml.php");
                 </select>
             </td>
         </tr>
-        
+
         <tr>
             <td class="text-right">Stock Mínimo</td>
             <td><input type="number" name="stockminimo" class="form-control" min="0" step="1" value="<?=$mat['stockminimo']?>" ></td>
         </tr>
         <tr>
             <td class="text-right">Costo de Compra</td>
-            <td><input type="number" name="costocompra" class="form-control" min="0" step="0.1" value="<?=$mat['costocompra']?>"></td>
+            <td><input type="number" name="costocompra" class="form-control" min="0" step="0.001" value="<?=$mat['costocompra']?>"></td>
         </tr>
         <tr>
             <td class="text-right">Precio de Venta</td>
-            <td><input type="number" name="precioventa" class="form-control" min="0" step="0.1" value="<?=$mat['precioventa']?>"></td>
+            <td><input type="number" name="precioventa" class="form-control" min="0" step="0.001" value="<?=$mat['precioventa']?>"></td>
         </tr>
         <tr>
             <td class="text-right">Procedencia</td>

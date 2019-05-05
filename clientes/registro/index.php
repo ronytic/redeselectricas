@@ -10,7 +10,7 @@ include_once("../../cabecerahtml.php");
     <form action="guardar.php" method="post" enctype="multipart/form-data">
     <table class="table table-bordered table-hover">
         <tr>
-            <td class="text-right">Nombre</td>
+            <td class="text-right">Nombre de Empresa</td>
             <td><input type="text" name="nombre" class="form-control" autofocus></td>
         </tr>
         <tr>
@@ -41,8 +41,8 @@ include_once("../../cabecerahtml.php");
             <td class="text-right">Correo</td>
             <td><input name="correo" class="form-control" type="text" accept="image/*"></td>
         </tr>
-        
-        
+
+
         <tr>
             <td></td>
             <td><input type="submit" value="Guardar" class="btn btn-info"></td>

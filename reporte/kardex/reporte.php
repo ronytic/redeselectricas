@@ -12,7 +12,7 @@ $mat=array_shift($mat);
 
 include_once("../../class/proveedor.php");
 $proveedor=new proveedor;
-$pro=$proveedor->mostrarTodoRegistro("codproveedor=codproveedor");
+$pro=$proveedor->mostrarTodoRegistro("codproveedor=$codproveedor");
 $pro=array_shift($pro);
 
 include_once("../../class/almacen.php");
@@ -67,13 +67,13 @@ class PDF extends PPDF{
         $this->TituloCabecera(20,"Cantidad");
         $this->TituloCabecera(20,"Precio");
         $this->TituloCabecera(20,"Total");
-        
+
         $this->TituloCabecera(8,"N");
         $this->TituloCabecera(25,"Fecha");
         $this->TituloCabecera(20,"Cantidad");
         $this->TituloCabecera(20,"Precio");
         $this->TituloCabecera(20,"Total");
-        
+
     }
 }
 
@@ -95,35 +95,35 @@ foreach($kar as $k){
     $i++;
     if($k['tipo']=="ingreso"){
         $tti++;
-        
+
         $pdf->CuadroCuerpo(8 ,$i,0,"R",1);
         $pdf->CuadroCuerpo(25,$k['fecharegistro']." ".$k['horaregistro'],0,"R",1,7);
         $pdf->CuadroCuerpo(20,$k['cantidad'],0,"R",1,"9");
         $pdf->CuadroCuerpo(20,$k['precio'],0,"R",1,"9");
         $pdf->CuadroCuerpo(20,$k['total'],0,"R",1,"9");
-        
+
         $ci+=$k['cantidad'];
         $pi+=$k['precio'];
         $ti+=$k['total'];
     }elseif($k['tipo']=="salida"){
         $tts++;
-        
+
         $pdf->CuadroCuerpo(93,"",0,"",0,"9");
         $pdf->CuadroCuerpo(8 ,$i,0,"R",1);
         $pdf->CuadroCuerpo(25,$k['fecharegistro']." ".$k['horaregistro'],0,"R",1,7);
         $pdf->CuadroCuerpo(20,$k['cantidad'],0,"R",1,"9");
         $pdf->CuadroCuerpo(20,$k['precio'],0,"R",1,"9");
         $pdf->CuadroCuerpo(20,$k['total'],0,"R",1,"9");
-        
+
         $cs+=$k['cantidad'];
         $ps+=$k['precio'];
         $ts+=$k['total'];
     }
     $pdf->ln();
-    
-    
 
-    
+
+
+
 }
 $pdf->CuadroCuerpo(8 ,"Total",1,"R",1,7,"B");
 $pdf->CuadroCuerpo(25,$tti,1,"R",1,9,"B");

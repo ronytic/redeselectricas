@@ -15,12 +15,12 @@ $pro=$proveedor->mostrarTodoRegistro("",1,"nombre");
     </td>
     <td>
         <select name="p[<?=$f;?>][codtipo]" class="form-control codtipo" rel="<?=$f;?>">
-                    
+
                 </select>
     </td>
     <td>
         <select name="p[<?=$f;?>][codsubtipo]" class="form-control codsubtipo" rel="<?=$f;?>">
-                   
+
         </select>
     </td>
     <td>
@@ -43,5 +43,8 @@ $pro=$proveedor->mostrarTodoRegistro("",1,"nombre");
     </td>
     <td>
         <input type="text" name="p[<?=$f;?>][total]" readonly class="form-control total text-right" rel="<?=$f;?>" value="0">
+    </td>
+    <td width="15">
+        <a href="#" class="eliminarfila btn btn-danger">X</a>
     </td>
 </tr>

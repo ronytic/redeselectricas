@@ -1,7 +1,7 @@
 <?php
 include_once("../../login/check.php");
 $folder="../../";
-$titulo="Listado de Clientes";
+$titulo="Listado de Cotización";
 
 
 include_once("../../class/almacen.php");
@@ -53,6 +53,6 @@ include_once("../../cabecerahtml.php");
     <div class="panel-body">
         <div class="row">
         <div class="col-lg-12" id="respuestaformulario">
-    
+
         </div>
 <?php include_once("../../pie.php");?>
