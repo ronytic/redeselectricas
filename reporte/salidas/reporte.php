@@ -47,19 +47,19 @@ class PDF extends PPDF{
         array("almacen"=>"Almacén","nombre"=>"Nombre","marca"=>"Marca","unidad"=>"Unidad","codigo"=>"Codigo","proveedor"=>"Proveedor","tipo"=>"Tipo","subtipo"=>"SubTipo","stockanterior"=>"StockAnt","cantidad"=>"Cant. ","stockfin"=>"StockFin","fechaIng"=>"FechaIngreso","tipoing"=>"TipoIng","cliente"=>"Cliente","detalle"=>"Detalle");
         $this->TituloCabecera(8,"N");
         $this->TituloCabecera(10,"Almac",8);
-        $this->TituloCabecera(70,"Nombre");
+        $this->TituloCabecera(60,"Nombre");
         $this->TituloCabecera(20,"Marca");
         $this->TituloCabecera(15,"Cod.");
-        $this->TituloCabecera(20,"Proveedor");
+        $this->TituloCabecera(40,"Proveedor");
         $this->TituloCabecera(20,"Tipo");
         $this->TituloCabecera(20,"SubTipo");
         $this->TituloCabecera(15,"StockAnt");
         $this->TituloCabecera(15,"Cant.");
         $this->TituloCabecera(15,"StockFin");
         $this->TituloCabecera(20,"FechaSal");
-        $this->TituloCabecera(20,"TipoSal");
+        $this->TituloCabecera(15,"TipoSal");
         $this->TituloCabecera(35,"Cliente");
-        $this->TituloCabecera(30,"Detalle");
+        $this->TituloCabecera(20,"Detalle");
     }
 }
 
@@ -108,19 +108,19 @@ foreach($sal as $in){
     $total=$total+$in['cantidad'];
     $pdf->CuadroCuerpo(8 ,$i,0,"R");
     $pdf->CuadroCuerpo(10,$al['nombre'],0,"",0,7);
-    $pdf->CuadroCuerpo(70,$m['nombre'],0,"",0,7);
-    $pdf->CuadroCuerpo(20,$m['marca']);
-    $pdf->CuadroCuerpo(15,$m['codigo']);
-    $pdf->CuadroCuerpo(20,$p['nombre']);
-    $pdf->CuadroCuerpo(20,$t['nombre']);
-    $pdf->CuadroCuerpo(20,$t['nombre']);
+    $pdf->CuadroCuerpo(60,$m['nombre'],0,"",0,7);
+    $pdf->CuadroCuerpo(20,$m['marca'],0,"",0,7);
+    $pdf->CuadroCuerpo(15,$m['codigo'],0,"",0,7);
+    $pdf->CuadroCuerpo(40,$p['nombre'],0,"",0,7);
+    $pdf->CuadroCuerpo(20,$t['nombre'],0,"",0,7);
+    $pdf->CuadroCuerpo(20,$t['nombre'],0,"",0,7);
     $pdf->CuadroCuerpo(15,$in['stock'],0,"R");
     $pdf->CuadroCuerpo(15,$in['cantidad'],0,"R");
     $pdf->CuadroCuerpo(15,$in['stockfinal'],0,"R");
-    $pdf->CuadroCuerpo(20,$in['fecharegistro']);
-    $pdf->CuadroCuerpo(20,$in['tipo']);
+    $pdf->CuadroCuerpo(20,$in['fecharegistro'],0,"",0,7);
+    $pdf->CuadroCuerpo(15,$in['tipo'],0,"",0,7);
     $pdf->CuadroCuerpo(35,$cli['nombre'],0,"",0,7);
-    $pdf->CuadroCuerpo(30,$in['detalle']);
+    $pdf->CuadroCuerpo(20,$in['detalle'],0,"",0,7);
     $pdf->ln();
 }
 $i++;

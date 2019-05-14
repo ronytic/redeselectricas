@@ -62,18 +62,18 @@ class PDF extends PPDF{
               "detalle"=>"Detalle");
         $this->TituloCabecera(8,"N");
         $this->TituloCabecera(10,"Almac",8);
-        $this->TituloCabecera(80,"Nombre");
+        $this->TituloCabecera(70,"Nombre");
         $this->TituloCabecera(20,"Marca");
         $this->TituloCabecera(15,"Cod.");
-        $this->TituloCabecera(20,"Proveedor");
-        $this->TituloCabecera(20,"Tipo");
-        $this->TituloCabecera(20,"SubTipo");
+        $this->TituloCabecera(40,"Proveedor");
+        $this->TituloCabecera(30,"Tipo");
+        $this->TituloCabecera(30,"SubTipo");
         $this->TituloCabecera(15,"StockAnt");
         $this->TituloCabecera(15,"Cant.");
         $this->TituloCabecera(15,"StockFin");
         $this->TituloCabecera(20,"FechaIng");
-        $this->TituloCabecera(20,"TipoIng");
-        $this->TituloCabecera(30,"Cliente");
+        $this->TituloCabecera(15,"TipoIng");
+        // $this->TituloCabecera(30,"Cliente");
         $this->TituloCabecera(20,"Detalle");
     }
 }
@@ -128,19 +128,19 @@ foreach($ing as $in){
 
     $pdf->CuadroCuerpo(8 ,$i,0,"R");
     $pdf->CuadroCuerpo(10,$al['nombre'],0,"",0,7);
-    $pdf->CuadroCuerpo(80,$m['nombre'],0,"",0,7);
-    $pdf->CuadroCuerpo(20,$m['marca']);
-    $pdf->CuadroCuerpo(15,$m['codigo']);
-    $pdf->CuadroCuerpo(20,$p['nombre']);
-    $pdf->CuadroCuerpo(20,$t['nombre']);
-    $pdf->CuadroCuerpo(20,$t['nombre']);
+    $pdf->CuadroCuerpo(70,$m['nombre'],0,"",0,7);
+    $pdf->CuadroCuerpo(20,$m['marca'],0,"",0,7);
+    $pdf->CuadroCuerpo(15,$m['codigo'],0,"",0,7);
+    $pdf->CuadroCuerpo(40,$p['nombre'],0,"",0,7);
+    $pdf->CuadroCuerpo(30,$t['nombre'],0,"",0,7);
+    $pdf->CuadroCuerpo(30,$st['nombre'],0,"",0,7);
     $pdf->CuadroCuerpo(15,$in['stock'],0,"R");
     $pdf->CuadroCuerpo(15,$in['cantidad'],0,"R");
     $pdf->CuadroCuerpo(15,$in['stockfinal'],0,"R");
-    $pdf->CuadroCuerpo(20,$in['fecharegistro']);
-    $pdf->CuadroCuerpo(20,$in['tipo']);
-    $pdf->CuadroCuerpo(30,$cli['nombre']);
-    $pdf->CuadroCuerpo(20,$in['detalle']);
+    $pdf->CuadroCuerpo(20,$in['fecharegistro'],0,"",0,7);
+    $pdf->CuadroCuerpo(15,$in['tipo'],0,"",0,7);
+    // $pdf->CuadroCuerpo(30,$cli['nombre'],0,"",0,7);
+    $pdf->CuadroCuerpo(20,$in['detalle'],0,"",0,7);
     $pdf->ln();
 }
 $i++;

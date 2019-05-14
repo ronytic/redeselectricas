@@ -27,19 +27,19 @@ class PDF extends PPDF{
     function Cabecera(){
        // "nombre"=>"Nombre","marca"=>"Marca","unidad"=>"Unidad","codigo"=>"Codigo","proveedor"=>"Proveedor","tipo"=>"Tipo","subtipo"=>"SubTipo","stockminimo"=>"StockMin","costocompra"=>"C. Compra","precioventa"=>"P. Venta","procedencia"=>"Proce"
         $this->TituloCabecera(8,"N");
-        $this->TituloCabecera(50,"Nombre");
+        $this->TituloCabecera(90,"Nombre");
         $this->TituloCabecera(25,"Marca");
         $this->TituloCabecera(20,"Unidad");
         $this->TituloCabecera(20,"Codigo");
-        $this->TituloCabecera(30,"Proveedor");
+        $this->TituloCabecera(40,"Proveedor");
         $this->TituloCabecera(20,"Tipo");
         $this->TituloCabecera(20,"SubTipo");
         $this->TituloCabecera(15,"StockMin");
         //$this->TituloCabecera(15,"StockMin");
         $this->TituloCabecera(20,"C. Compra");
         $this->TituloCabecera(20,"P. Venta");
-        $this->TituloCabecera(50,"Procedencia");
-        
+        $this->TituloCabecera(20,"Procedencia");
+
     }
 }
 
@@ -48,7 +48,7 @@ $pdf->Addpage();
 
 $i=0;
 foreach($mat as $m){
-    
+
     $pro=$proveedor->mostrarTodoRegistro("codproveedor=".$m['codproveedor'],1,"nombre");
     $p=array_shift($pro);
     $uni=$unidad->mostrarTodoRegistro("codunidad=".$m['codunidad'],1,"nombre");
@@ -57,7 +57,7 @@ foreach($mat as $m){
     $t=array_shift($tip);
     $stipo=$subtipo->mostrarTodoRegistro("codsubtipo=".$m['codsubtipo'],1,"nombre");
     $st=array_shift($stipo);
-    
+
     $i++;
     $datos[$i]['codmaterial']=$m['codmaterial'];
     $datos[$i]['proveedor']=$p['nombre'];
@@ -71,19 +71,19 @@ foreach($mat as $m){
     $datos[$i]['costocompra']=$m['costocompra'];
     $datos[$i]['precioventa']=$m['precioventa'];
     $datos[$i]['procedencia']=$m['procedencia'];
-    
+
     $pdf->CuadroCuerpo(8 ,$i,0,"R");
-    $pdf->CuadroCuerpo(50,$m['nombre']);
+    $pdf->CuadroCuerpo(90,$m['nombre'],0,"",0,"7");
     $pdf->CuadroCuerpo(25,$m['marca'],0,"",0,"7");
-    $pdf->CuadroCuerpo(20,$u['nombre']);
-    $pdf->CuadroCuerpo(20,$m['codigo']);
-    $pdf->CuadroCuerpo(30,$p['nombre']);
-    $pdf->CuadroCuerpo(20,$t['nombre']);
-    $pdf->CuadroCuerpo(20,$st['nombre']);
+    $pdf->CuadroCuerpo(20,$u['nombre'],0,"",0,"7");
+    $pdf->CuadroCuerpo(20,$m['codigo'],0,"",0,"7");
+    $pdf->CuadroCuerpo(40,$p['nombre'],0,"",0,"7");
+    $pdf->CuadroCuerpo(20,$t['nombre'],0,"",0,"7");
+    $pdf->CuadroCuerpo(20,$st['nombre'],0,"",0,"7");
     $pdf->CuadroCuerpo(15,$m['stockminimo'],0,"R");
     $pdf->CuadroCuerpo(20,$m['costocompra'],0,"R");
     $pdf->CuadroCuerpo(20,$m['precioventa'],0,"R");
-    $pdf->CuadroCuerpo(50,$m['procedencia']);
+    $pdf->CuadroCuerpo(50,$m['procedencia'],0,"",0,"7");
     $pdf->ln();
 }
 

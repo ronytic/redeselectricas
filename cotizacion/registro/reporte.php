@@ -80,19 +80,19 @@ foreach($cotd as $cd){
     $pdf->CuadroCuerpo(20,number_format($cd['total'],2,".",""),0,0,1);
     $pdf->ln();
 }
-$pdf->CuadroCuerpo(133,"Son:".num2letras(number_format($cot['subtotal'],2,".","")),0,"L",1,9,"B");
-$pdf->CuadroCuerpo(35,"Subtotal:",0,"R",1,9,"B");
+$pdf->CuadroCuerpo(133,"Son:".num2letras(number_format($cot['subtotal'],2,".",""))." Bolivianos",0,"L",1,9,"B");
+$pdf->CuadroCuerpo(35,"Subtotal(Bs):",0,"R",1,9,"B");
 $pdf->CuadroCuerpo(20,number_format($cot['subtotal'],2,".",""),0,"R",1,9,"B");
 $pdf->ln();
 $pdf->CuadroCuerpo(133,"",0,"L",0,9,"B");
-$pdf->CuadroCuerpo(35,"Descuento:",0,"R",1,9,"B");
+$pdf->CuadroCuerpo(35,"Descuento(Bs):",0,"R",1,9,"B");
 $pdf->CuadroCuerpo(20,number_format($cot['descuento'],2,".",""),0,"R",1,9,"B");
 $pdf->ln();
 $pdf->CuadroCuerpo(133,"",0,"L",0,9,"B");
-$pdf->CuadroCuerpo(35,"Total:",0,"R",1,9,"B");
+$pdf->CuadroCuerpo(35,"Total(Bs):",0,"R",1,9,"B");
 $pdf->CuadroCuerpo(20,number_format($cot['totalgeneral'],2,".",""),0,"R",1,9,"B");
 $pdf->ln();
-$pdf->CuadroCuerpo(25,"Detalle:",0,"",0,9,"B");
+$pdf->CuadroCuerpo(25,"Detalle(Bs):",0,"",0,9,"B");
 $pdf->CuadroCuerpoMulti(115,$cot['detalle'],0,"",0,9,"");
 $pdf->ln();
 
