@@ -80,7 +80,7 @@ foreach($cotd as $cd){
     $pdf->CuadroCuerpo(20,number_format($cd['total'],2,".",""),0,0,1);
     $pdf->ln();
 }
-$pdf->CuadroCuerpo(133,"Son:".num2letras(number_format($cot['subtotal'],2,".",""))." Bolivianos",0,"L",1,9,"B");
+$pdf->CuadroCuerpo(133,"Son:".num2letras(number_format($cot['totalgeneral'],2,".",""))." Bolivianos",0,"L",1,9,"B");
 $pdf->CuadroCuerpo(35,"Subtotal(Bs):",0,"R",1,9,"B");
 $pdf->CuadroCuerpo(20,number_format($cot['subtotal'],2,".",""),0,"R",1,9,"B");
 $pdf->ln();
