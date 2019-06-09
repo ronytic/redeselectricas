@@ -1,7 +1,7 @@
 <?php
 include_once("fpdf_protection.php");
     include_once("../../configuracion.php");
-
+	include_once("../../basededatos.php");
 	$logo="logo.png";
 
 
@@ -24,21 +24,39 @@ include_once("fpdf_protection.php");
 			$this->SetLeftMargin(18);
 			$this->SetAutoPageBreak(true,15);
 			global $title,$gestion,$titulo,$logo,$idioma;
-			$fecha=capitalizar(strftime("%A, %d "))." de ".capitalizar(strftime(" %B "))." de ".strftime(" %Y");
+			$fecha=capitalizar(strftime(" %d "))." de ".capitalizar(strftime(" %B "))." de ".strftime(" %Y");
 			$tam=10;
-			$this->Image("../../imagenes/logo/".$logo,10,10,40,20);
+			$this->SetXY(15,15);
 			$this->Fuente("B",$tam);
-			$this->SetXY(34,12);
-			$this->Cell(70,4,utf8_decode($title),0,0,"L");
+			//$this->Image("../../imagenes/logo/".$logo,10,10,40,20);
+			$this->Cell(70,4,utf8_decode("REDES ELECTRICAS"),0,0,"C");
+			$this->Fuente("B",$tam+6);
+			$this->SetXY(15,20);
+			$this->Cell(70,4,utf8_decode("GUT"),0,0,"C");
+			$this->Fuente("B",$tam-2);
+			$this->SetXY(10,25);
+			$this->Cell(70,4,utf8_decode("Venta e Importación de Materiales Eléctricos"),0,0,"C");
+			$this->SetXY(10,29);
+			$this->Cell(70,4,utf8_decode("Y Automatización Industrial"),0,0,"C");
 			$this->Fuente("B",8);
-			$this->SetXY(34,16);
+
+			$this->SetXY($this->ancho-30,15);
+			$this->Cell(60,4,utf8_decode("LA Paz - El Alto"),0,0,"C");
+			$this->SetXY($this->ancho-30,19);
+			$this->Cell(60,4,utf8_decode("Calle Evadidos del Paraguay Nº 25"),0,0,"C");
+			$this->SetXY($this->ancho-30,23);
+			$this->Cell(60,4,utf8_decode("Zona Villa Bolivar A"),0,0,"C");
+			$this->SetXY($this->ancho-30,27);
+			$this->Cell(60,4,utf8_decode("Central Piloto: (591-2) 2825887"),0,0,"C");
+
+
 			$this->Cell(70,4,utf8_decode($gestion),0,0,"L");
 			$this->ln(10);
 			$this->Fuente("B",18);
 			$this->Cell($this->ancho,4,utf8_decode($titulo),0,5,"C");
 			$this->ln(5);
             if(!isset($FechaReporte)){
-			    $this->CuadroCabecera(32,"Fecha del Reporte: ",50,utf8_encode($fecha));
+			    $this->CuadroCabecera(32,"Fecha del Reporte: ",50,utf8_decode($fecha));
                 $this->ln(5);
             }
 
